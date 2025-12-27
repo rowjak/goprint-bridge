@@ -15,6 +15,10 @@ import { Call as $Call, CancellablePromise as $CancellablePromise, Create as $Cr
 // @ts-ignore: Unused imports
 import * as config$0 from "./config/models.js";
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: Unused imports
+import * as $models from "./models.js";
+
 /**
  * GetAutoStartStatus returns whether autostart is enabled
  * @returns {$CancellablePromise<boolean>}
@@ -35,11 +39,11 @@ export function GetConfig() {
 
 /**
  * GetPrinters returns a list of available printers
- * @returns {$CancellablePromise<string[]>}
+ * @returns {$CancellablePromise<$models.Printer[]>}
  */
 export function GetPrinters() {
     return $Call.ByID(2234194827).then(/** @type {($result: any) => any} */(($result) => {
-        return $$createType1($result);
+        return $$createType2($result);
     }));
 }
 
@@ -130,4 +134,5 @@ export function StopServer() {
 
 // Private type creation functions
 const $$createType0 = config$0.Config.createFrom;
-const $$createType1 = $Create.Array($Create.Any);
+const $$createType1 = $models.Printer.createFrom;
+const $$createType2 = $Create.Array($$createType1);

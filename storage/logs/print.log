@@ -108,3 +108,13 @@
 {"level":"info","time":"2025-12-27T09:26:02+07:00","message":"GoPrintBridge started"}
 {"level":"info","time":"2025-12-27T09:26:31+07:00","message":"GoPrintBridge started"}
 {"level":"info","time":"2025-12-27T09:34:34+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:46:05+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:51:07+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:51:18+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:51:26+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T09:51:56+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:52:04+07:00","message":"GoPrintBridge shutdown"}
+{"level":"info","time":"2025-12-27T09:52:53+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:53:54+07:00","message":"GoPrintBridge started"}
+{"level":"error","error":"remove /Users/rowjak/Library/LaunchAgents/GoPrintBridge.plist: no such file or directory","time":"2025-12-27T09:54:02+07:00","message":"Failed to toggle autostart"}
+{"level":"info","port":9999,"time":"2025-12-27T09:54:02+07:00","message":"Print server started"}

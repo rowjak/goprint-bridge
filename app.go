@@ -1,8 +1,10 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"os/exec"
+	"regexp"
 	"runtime"
 	"strings"
 
@@ -14,6 +16,12 @@ import (
 	"goprint-bridge/printer"
 	"goprint-bridge/server"
 )
+
+// Printer represents a printer with its status
+type Printer struct {
+	Name   string `json:"name"`
+	Status string `json:"status"`
+}
 
 // AppService is the main application service for Wails v3
 type AppService struct {
@@ -45,8 +53,8 @@ func (a *AppService) Shutdown() {
 }
 
 // GetPrinters returns a list of available printers
-func (a *AppService) GetPrinters() []string {
-	var printers []string
+func (a *AppService) GetPrinters() []Printer {
+	var printers []Printer
 
 	switch runtime.GOOS {
 	case "windows":
@@ -56,66 +64,153 @@ func (a *AppService) GetPrinters() []string {
 	case "linux":
 		printers = a.getLinuxPrinters()
 	default:
-		printers = []string{}
+		printers = []Printer{}
 	}
 
 	return printers
 }
 
+// WindowsPrinter matches PowerShell JSON output
+type WindowsPrinter struct {
+	Name          string      `json:"Name"`
+	PrinterStatus interface{} `json:"PrinterStatus"` // Can be string or int
+}
+
 // getWindowsPrinters gets printers using PowerShell
-func (a *AppService) getWindowsPrinters() []string {
-	cmd := exec.Command("powershell", "-NoProfile", "-NonInteractive", "-Command", "Get-Printer | Select-Object -ExpandProperty Name")
+func (a *AppService) getWindowsPrinters() []Printer {
+	// Use ConvertTo-Json to get structured data
+	cmd := exec.Command("powershell", "-NoProfile", "-NonInteractive", "-Command", "Get-Printer | Select-Object Name, PrinterStatus | ConvertTo-Json")
 	hideConsoleWindow(cmd)
 	output, err := cmd.Output()
 	if err != nil {
 		logger.Error("Failed to get Windows printers", err)
-		return []string{}
+		return []Printer{}
 	}
 
-	return a.parseOutput(string(output))
+	var winPrinters []WindowsPrinter
+	// If only one printer, PowerShell returns an object, not array. We might need to handle that,
+	// but ConvertTo-Json usually handles arrays. However, for a single item it might return just object.
+	// A trick is to wrap in @() in PowerShell: @(Get-Printer ...)
+	cmd = exec.Command("powershell", "-NoProfile", "-NonInteractive", "-Command", "@(Get-Printer | Select-Object Name, PrinterStatus) | ConvertTo-Json")
+	hideConsoleWindow(cmd)
+	output, err = cmd.Output()
+	if err != nil {
+		logger.Error("Failed to get Windows printers", err)
+		return []Printer{}
+	}
+
+	if err := json.Unmarshal(output, &winPrinters); err != nil {
+		logger.Error("Failed to parse Windows printers JSON", err)
+		return []Printer{}
+	}
+
+	var result []Printer
+	for _, p := range winPrinters {
+		status := "Unknown"
+		switch v := p.PrinterStatus.(type) {
+		case string:
+			status = v
+		case float64:
+			// Map standard Windows printer status codes
+			// Ref: https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-printer
+			code := int(v)
+			switch code {
+			case 1:
+				status = "Other"
+			case 2:
+				status = "Error"
+			case 3:
+				status = "Ready" // Idle
+			case 4:
+				status = "Printing"
+			case 5:
+				status = "Warmup"
+			case 6:
+				status = "Stopped"
+			case 7:
+				status = "Offline"
+			default:
+				status = fmt.Sprintf("Status %d", code)
+			}
+		default:
+			status = fmt.Sprintf("%v", v)
+		}
+
+		result = append(result, Printer{
+			Name:   p.Name,
+			Status: status,
+		})
+	}
+	return result
 }
 
 // getMacPrinters gets printers using lpstat
-func (a *AppService) getMacPrinters() []string {
-	cmd := exec.Command("lpstat", "-p")
+func (a *AppService) getMacPrinters() []Printer {
+	// Use -l for long output to get alerts/status
+	cmd := exec.Command("lpstat", "-l", "-p")
 	output, err := cmd.Output()
 	if err != nil {
 		logger.Error("Failed to get Mac printers", err)
-		return []string{}
+		return []Printer{}
 	}
 
 	lines := strings.Split(string(output), "\n")
-	var printers []string
+	var printers []Printer
+	var currentPrinter *Printer
+
+	// Regex to match the start of a printer block: "printer <name> is <status>."
+	reStart := regexp.MustCompile(`^printer\s+(\S+)\s+is\s+(\w+)`)
+	// Regex to match alert line: "Alerts: <alert>"
+	reAlert := regexp.MustCompile(`^\s+Alerts:\s+(.*)`)
+
 	for _, line := range lines {
-		line = strings.TrimSpace(line)
-		if strings.HasPrefix(line, "printer ") {
-			parts := strings.Fields(line)
-			if len(parts) >= 2 {
-				printers = append(printers, parts[1])
+		// Check for start of new printer block
+		if matches := reStart.FindStringSubmatch(line); len(matches) >= 3 {
+			// If we were processing a printer, save it
+			if currentPrinter != nil {
+				printers = append(printers, *currentPrinter)
+			}
+			status := matches[2]
+			if status == "idle" {
+				status = "Ready"
+			} else {
+				// Capitalize first letter
+				if len(status) > 0 {
+					status = strings.ToUpper(status[:1]) + status[1:]
+				}
+			}
+
+			// Start new printer
+			currentPrinter = &Printer{
+				Name:   matches[1],
+				Status: status,
+			}
+		} else if currentPrinter != nil {
+			// Check for alerts in the current block
+			if matches := reAlert.FindStringSubmatch(line); len(matches) >= 2 {
+				alert := matches[1]
+				if strings.Contains(alert, "offline") {
+					currentPrinter.Status = "Offline"
+				}
 			}
 		}
+	}
+
+	// Append the last printer
+	if currentPrinter != nil {
+		printers = append(printers, *currentPrinter)
 	}
 
 	return printers
 }
 
 // getLinuxPrinters gets printers using lpstat
-func (a *AppService) getLinuxPrinters() []string {
+func (a *AppService) getLinuxPrinters() []Printer {
 	return a.getMacPrinters() // Same command works for Linux
 }
 
-// parseOutput cleans command output into a list
-func (a *AppService) parseOutput(output string) []string {
-	lines := strings.Split(output, "\n")
-	var result []string
-	for _, line := range lines {
-		line = strings.TrimSpace(line)
-		if line != "" {
-			result = append(result, line)
-		}
-	}
-	return result
-}
+// parseOutput is no longer used but kept for reference if needed, or can be removed.
+// Removed to avoid unused code warning as getWindowsPrinters uses JSON now.
 
 // GetConfig returns the current configuration
 func (a *AppService) GetConfig() config.Config {

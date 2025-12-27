@@ -75,7 +75,8 @@ onMounted(async () => {
     // Load config
     const cfg = await GetConfig()
     if (cfg) {
-      selectedPrinter.value = cfg.selected_printer || (printers.value.length > 0 ? printers.value[0] : '')
+      const defaultPrinter = printers.value.length > 0 ? printers.value[0].name : ''
+      selectedPrinter.value = cfg.selected_printer || defaultPrinter
       port.value = cfg.port || 9999
       autoStart.value = cfg.auto_start || false
     }
@@ -317,8 +318,8 @@ const formatTime = (date) => {
               <option v-if="printers.length === 0" value="" class="bg-navy-900 text-white">
                 No printers found
               </option>
-              <option v-for="printer in printers" :key="printer" :value="printer" class="bg-navy-900 text-white">
-                {{ printer }}
+              <option v-for="printer in printers" :key="printer.name" :value="printer.name" class="bg-navy-900 text-white">
+                {{ printer.name }} ({{ printer.status }})
               </option>
             </select>
           </div>
@@ -397,7 +398,7 @@ const formatTime = (date) => {
         <div v-if="activityLog.length > 0" class="space-y-1">
           <div class="border-t border-white/10 pt-2">
             <p class="text-xs text-white/40 mb-1">Recent Activity</p>
-            <TransitionGroup name="list" tag="div" class="space-y-1">
+            <div class="space-y-1">
               <div 
                 v-for="activity in activityLog"
                 :key="activity.id"
@@ -415,7 +416,7 @@ const formatTime = (date) => {
                 <span class="text-white/50 flex-shrink-0">{{ formatTime(activity.time) }}</span>
                 <span class="text-white/70 truncate">{{ activity.message }}</span>
               </div>
-            </TransitionGroup>
+            </div>
           </div>
         </div>
 
@@ -464,19 +465,7 @@ const formatTime = (date) => {
   transform: translateX(20px);
 }
 
-/* List animation */
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.3s ease;
-}
-.list-enter-from {
-  opacity: 0;
-  transform: translateY(-10px);
-}
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(-10px);
-}
+/* List animation removed as per request */
 
 /* Fade in animation */
 @keyframes fadeIn {

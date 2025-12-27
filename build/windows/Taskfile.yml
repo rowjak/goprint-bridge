@@ -1,0 +1,24 @@
+version: '3'
+
+includes:
+  common: ../Taskfile.yml
+
+tasks:
+  build:
+    summary: Creates a build of the application for Windows
+    deps:
+      - task: common:go:mod:tidy
+      - task: common:build:frontend
+    cmds:
+      - go build -o {{.BIN_DIR}}/{{.APP_NAME}}.exe
+    env:
+      GOOS: windows
+      GOARCH: amd64
+      CGO_ENABLED: 1
+      CC: x86_64-w64-mingw32-gcc
+      CXX: x86_64-w64-mingw32-g++
+
+  run:
+    summary: Runs the application
+    cmds:
+      - '{{.BIN_DIR}}/{{.APP_NAME}}.exe'
