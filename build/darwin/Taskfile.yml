@@ -1,0 +1,21 @@
+version: '3'
+
+includes:
+  common: ../Taskfile.yml
+
+tasks:
+  build:
+    summary: Creates a build of the application for macOS
+    deps:
+      - task: common:go:mod:tidy
+      - task: common:build:frontend
+    cmds:
+      - go build -o {{.BIN_DIR}}/{{.APP_NAME}}
+    env:
+      GOOS: darwin
+      CGO_ENABLED: 1
+
+  run:
+    summary: Runs the application
+    cmds:
+      - '{{.BIN_DIR}}/{{.APP_NAME}}'

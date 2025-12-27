@@ -1,0 +1,109 @@
+{"level":"info","time":"2025-12-26T18:58:52+07:00","message":"GoPrint Client started"}
+{"level":"info","port":9999,"time":"2025-12-26T18:59:09+07:00","message":"Print server started"}
+{"level":"info","time":"2025-12-26T18:59:14+07:00","message":"Print server stopped"}
+{"level":"info","port":9999,"time":"2025-12-26T18:59:17+07:00","message":"Print server started"}
+{"level":"info","time":"2025-12-26T18:59:17+07:00","message":"Print server stopped"}
+{"level":"info","port":9999,"time":"2025-12-26T18:59:27+07:00","message":"Print server started"}
+{"level":"info","time":"2025-12-26T18:59:29+07:00","message":"Print server stopped"}
+{"level":"info","time":"2025-12-26T19:16:46+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:16:49+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:17:26+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:17:40+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:17:52+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:20:32+07:00","message":"GoPrint Client shutdown"}
+{"level":"info","time":"2025-12-26T19:20:43+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:23:06+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:23:11+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:26:09+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:29:34+07:00","message":"Window minimized to background"}
+{"level":"info","time":"2025-12-26T19:29:50+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T19:30:00+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T19:30:00+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T19:30:01+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T19:30:19+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T19:30:45+07:00","message":"GoPrint Client started"}
+{"level":"error","error":"remove /Users/rowjak/Library/LaunchAgents/GoPrintClient.plist: no such file or directory","time":"2025-12-26T19:30:54+07:00","message":"Failed to toggle autostart"}
+{"level":"info","port":9999,"time":"2025-12-26T19:30:54+07:00","message":"Print server started"}
+{"level":"info","time":"2025-12-26T19:31:01+07:00","message":"Print server stopped"}
+{"level":"info","time":"2025-12-26T19:31:13+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T19:34:29+07:00","message":"GoPrint Client started"}
+{"level":"error","error":"remove /Users/rowjak/Library/LaunchAgents/GoPrintClient.plist: no such file or directory","time":"2025-12-26T19:34:35+07:00","message":"Failed to toggle autostart"}
+{"level":"info","port":9999,"time":"2025-12-26T19:34:35+07:00","message":"Print server started"}
+{"level":"info","time":"2025-12-26T19:34:40+07:00","message":"Print server stopped"}
+{"level":"error","error":"remove /Users/rowjak/Library/LaunchAgents/GoPrintClient.plist: no such file or directory","time":"2025-12-26T19:34:42+07:00","message":"Failed to toggle autostart"}
+{"level":"info","time":"2025-12-26T19:34:42+07:00","message":"Printing test page to: EPSON_L3110_Series"}
+{"level":"info","time":"2025-12-26T19:34:42+07:00","message":"Printing test page to: EPSON_L3110_Series"}
+{"level":"info","printer":"EPSON_L3110_Series","time":"2025-12-26T19:34:42+07:00","message":"Print job sent successfully"}
+{"level":"info","time":"2025-12-26T19:40:42+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T19:40:53+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T19:40:56+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:05:30+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T22:05:37+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:10:41+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T22:11:13+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:11:27+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:11:34+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:12:34+07:00","message":"GoPrint Client started"}
+{"level":"info","time":"2025-12-26T22:12:42+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:12:46+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:12:50+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:27:02+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-26T22:27:09+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-26T22:27:11+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T06:09:30+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T06:13:00+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T06:30:00+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T06:30:40+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T06:30:50+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T06:30:53+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T06:31:03+07:00","message":"Window minimized to background"}
+{"level":"info","time":"2025-12-27T06:31:12+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T06:31:22+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T07:36:36+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T07:44:20+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T07:51:21+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T07:56:01+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T07:56:06+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:00:13+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T08:02:04+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:02:07+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:02:24+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T08:02:30+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T08:11:22+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:12:09+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T08:12:24+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T08:53:56+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:54:39+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:56:24+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:57:51+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T08:58:05+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T08:58:49+07:00","message":"GoPrintBridge started"}
+{"level":"error","error":"remove /Users/rowjak/Library/LaunchAgents/GoPrintBridge.plist: no such file or directory","time":"2025-12-27T08:59:58+07:00","message":"Failed to toggle autostart"}
+{"level":"info","port":9999,"time":"2025-12-27T08:59:58+07:00","message":"Print server started"}
+{"level":"info","time":"2025-12-27T09:00:00+07:00","message":"Print server stopped"}
+{"level":"error","error":"remove /Users/rowjak/Library/LaunchAgents/GoPrintBridge.plist: no such file or directory","time":"2025-12-27T09:00:06+07:00","message":"Failed to toggle autostart"}
+{"level":"info","port":9999,"time":"2025-12-27T09:00:06+07:00","message":"Print server started"}
+{"level":"info","time":"2025-12-27T09:00:08+07:00","message":"Print server stopped"}
+{"level":"info","time":"2025-12-27T09:00:21+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T09:00:43+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:00:47+07:00","message":"GoPrintBridge shutdown"}
+{"level":"info","time":"2025-12-27T09:01:39+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:01:39+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:01:49+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:02:24+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T09:03:31+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:03:41+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T09:04:36+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:04:36+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:04:36+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:04:48+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:04:52+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T09:05:25+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:05:25+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:05:25+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:05:59+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:07:29+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T09:25:36+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:25:45+07:00","message":"Window hidden to background"}
+{"level":"info","time":"2025-12-27T09:26:02+07:00","message":"GoPrintBridge started"}
+{"level":"info","time":"2025-12-27T09:26:31+07:00","message":"GoPrintBridge started"}

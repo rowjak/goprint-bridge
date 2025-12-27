@@ -1,0 +1,50 @@
+version: '3'
+
+includes:
+  common: ./build/Taskfile.yml
+  darwin: ./build/darwin/Taskfile.yml
+
+vars:
+  APP_NAME: "goprint-bridge"
+  BIN_DIR: "build/bin"
+
+tasks:
+  build:
+    summary: Builds the application
+    cmds:
+      - task: "{{OS}}:build"
+
+  run:
+    summary: Runs the application
+    cmds:
+      - task: "{{OS}}:run"
+
+  dev:
+    summary: Runs the application in development mode
+    cmds:
+      - wails3 dev -config ./build/config.yml
+
+# version: '3'
+
+# tasks:
+#   build:
+#     desc: Build the application
+#     cmds:
+#       - wails3 build
+
+#   build:windows:
+#     desc: Build for Windows
+#     cmds:
+#       - wails3 build -platform windows/amd64
+
+#   build:macos:
+#     desc: Build for macOS (Universal)
+#     cmds:
+#       - wails3 build -platform darwin/amd64
+#       - wails3 build -platform darwin/arm64
+#       - lipo -create -output build/bin/myapp.app build/bin/myapp-amd64.app build/bin/myapp-arm64.app
+
+#   build:linux:
+#     desc: Build for Linux
+#     cmds:
+#       - wails3 build -platform linux/amd64

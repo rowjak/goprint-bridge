@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Nunito";
+    font-style: normal;
+    font-weight: 400;
+    src: local(""),
+        url("assets/fonts/nunito-v16-latin-regular.woff2") format("woff2");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Glass Effect Utilities */
+@layer components {
+    .glass {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20;
+    }
+
+    .glass-card {
+        @apply glass rounded-2xl shadow-2xl;
+    }
+
+    .glass-input {
+        @apply bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-3 py-2 text-sm text-white placeholder-white/50 focus:outline-none focus:border-mustard-400 focus:bg-white/10 transition-all duration-300;
+    }
+
+    .glass-select {
+        @apply glass-input appearance-none cursor-pointer;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff80' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 0.5rem center;
+        background-repeat: no-repeat;
+        background-size: 1.25em 1.25em;
+        padding-right: 2rem;
+    }
+
+    .glass-btn {
+        @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-2 text-sm text-white font-medium hover:bg-white/20 hover:border-white/30 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed;
+    }
+
+    .glass-btn-primary {
+        @apply glass-btn bg-mustard-500/30 border-mustard-400/30 hover:bg-mustard-500/50 hover:border-mustard-400/50;
+    }
+}
+
+/* Status Dot Animation */
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        opacity: 1;
+        box-shadow: 0 0 4px currentColor, 0 0 8px currentColor;
+    }
+
+    50% {
+        opacity: 0.6;
+        box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+    }
+}
+
+.status-dot {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* No drag for buttons and inputs */
+button,
+input,
+select,
+a {
+    -webkit-app-region: no-drag;
+}
+
+/* Allow window dragging on macOS */
+.glass-card {
+    -webkit-app-region: drag;
+}
