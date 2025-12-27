@@ -10,10 +10,11 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Go-1.23-00ADD8?logo=go" alt="Go">
+  <img src="https://img.shields.io/badge/Go-1.25-00ADD8?logo=go" alt="Go">
   <img src="https://img.shields.io/badge/Vue-3-4FC08D?logo=vue.js" alt="Vue 3">
   <img src="https://img.shields.io/badge/Wails-v3%20Alpha-red" alt="Wails">
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey" alt="Platform">
+  <img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License">
 </p>
 
 ---
@@ -273,7 +274,7 @@ Go functions callable from Vue:
 
 ## 📜 License
 
-MIT License © 2024 [rowjak](https://github.com/rowjak)
+Apache License 2.0 © 2025 [Abdur Rozaq](https://github.com/rowjak)
 
 ---
 
@@ -285,5 +286,5 @@ Pull requests welcome! For major changes, please open an issue first.
 
 ## 📞 Author
 
-**Rozaq Abdur Rokhim**  
+**Abdur Rozaq**  
 Email: rozaqabdur.rr@gmail.com
