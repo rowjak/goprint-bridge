@@ -42,7 +42,7 @@
 | Layer | Technology |
 |-------|------------|
 | **Framework** | [Wails v3 (Alpha)](https://wails.io/) |
-| **Backend** | Go 1.23 |
+| **Backend** | Go 1.25 |
 | **HTTP Server** | [Fiber](https://gofiber.io/) |
 | **Config** | [Viper](https://github.com/spf13/viper) |
 | **Logging** | [Zerolog](https://github.com/rs/zerolog) |
@@ -105,7 +105,7 @@ goprint-bridge/
 
 ### Prerequisites
 
-- **Go** >= 1.23
+- **Go** >= 1.25
 - **Node.js** >= 16
 - **Task** (go-task)
 - **Wails v3 CLI**
